@@ -1,7 +1,10 @@
 # BellaBeat-Capstone-project
 Author: Alex T
+
 Date: March 2, 2023
+
 Tools used: postgresSQL, Tableau public desktop, Git desktop
+
 
 Scenario
 
