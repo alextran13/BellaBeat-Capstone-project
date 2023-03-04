@@ -64,30 +64,71 @@ Preprocessed and shared on Kaggle platform by Mobius.
 #### Data preparation
 Download the datasets using the link on Kaggle above. After that, create tables daily_activity and sleep_day using PostgreSQL Pgadmin4 and import the main tables daily_activity and sleep_day in csv format using import function in PostgreSQL. 
 
-`CREATE TABLE daily_activity
-(
-   "Bellabeat_Id" bigint,
-    "ActivityDate" date,
-    "TotalSteps" bigint,
-    "TotalDistance" numeric,
-    "TrackerDistance" numeric,
-    "LoggedactivitiesDistance" numeric,
-    "VeryActiveDistance" numeric,
-    "ModeratelyActiveDistance" numeric,
-    "LightActiveDistance" numeric,
-    "SedentaryActiveDistance" numeric,
-    "VeryActiveMinutes" integer,
-    "FairlyActiveMinutes" integer,
-    "LightlyActiveMinutes" integer,
-    "SedentaryMinutes" integer,
-    "Calories" integer
-    )`
-
+>
+          CREATE TABLE daily_activity
+          (
+             id bigint,
+              activity_date date,
+              tot_step bigint,
+              tot_distance numeric,
+              tracker_distance numeric,
+              logged_distance numeric,
+              very_active_distance numeric,
+              moderately_active_distance numeric,
+              light_active_distance numeric,
+              sedentary_active_distance numeric,
+              very_active_minutes integer,
+              fairly_active_minutes integer,
+             light_active_minutes integer,
+              sedentary_active_minutes integer,
+              calories integer
+              );
+Now that we have imported the data, let's process it!
 
 
 ## Process
 
+I checked if there were duplicated rows in the three tables daily_activity, sleep_day, and weight_log_info using the code below:
 
+>
+          select count(*) as count
+          from daily_activity
+          group by id, activity_date, tot_step, calories
+          having count(*) >1
+          order by id`
+
+After finding out that there was no duplicates in all three tables, I checked for missing values by this code below: 
+
+>         
+          SELECT *
+          from daily_activity 
+          where id is Null
+          or activity_date is null
+          or tot_step is null
+          or tot_distance is null
+          or tracker_distance is null
+          or logged_distance is null
+          or very_active_distance is null
+          or moderately_active_distance is null
+          or light_active_distance is null
+          or sedentary_active_distance is null
+          or very_active_minutes is null
+          or fairly_active_minutes is null
+          or lightly_active_minutes is null
+          or sedentary_minutes is null
+          or calories is null;
+
+By doing this, I managed to find in weight_log_info table, there was 65 missing values out of 67 in a column so I decided to drop the column since 2 values don't help me anything in finding the patterns of data.
+
+> 
+          alter table weight_log_info 
+          drop column fat;
+          
+Voila! No more fat!
+
+After the cleaning data is done, I can now move on to merging. 
+
+On exploring the datasets, I saw that sleep_day data has 24 unique id while daily_activity has 33 unique id, and weight_log_info only has 8 unique id so I'm not too sure merging is the best idea right now. Ooooohhhh this is a tough call but I will try to see if there is any relationships between the data but will let the stakeholders know the obvious limitations of the datasets (if I can find the relationships at all that is!)
 
 ## Analyze
 
