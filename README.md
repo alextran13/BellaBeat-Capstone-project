@@ -3,7 +3,7 @@ Author: Alex T
 
 Date: March 2, 2023
 
-Tools used: postgresSQL, Tableau public desktop, Git desktop
+Tools used: postgreSQL pgadmin4, Tableau public desktop, Github
 
 
 ## Scenario
@@ -46,8 +46,19 @@ and relationship, stakeholders will be informed to better make data-based market
 
 ## Prepare
 
+* Data link: https://www.kaggle.com/datasets/arashnic/fitbit 
+* Availability: There are 18 data files in .csv format.
+* Data source: https://zenodo.org/record/53894#.X9oeh3Uzaao 
+Preprocessed and shared on Kaggle platform by Mobius. 
+* Reliability: Datasets were consented by thirty Fitbit users.
+* Originality: Datasets were collected by thirty Fitbit users and made available via distributed survey Amazon Mechanical Turk.
+* Compresensiveness: The data covers sleep habits, daily intensity of activity, durations of those sleep and activities, and calories changes.
+* Currentness: Data was recorded from April 12, 2016 to May 12, 2026
+* Citation: Unknown
 
 ## Process
+
+
 
 ## Analyze
 
