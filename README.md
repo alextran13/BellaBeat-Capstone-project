@@ -130,6 +130,8 @@ After the cleaning data is done, I can now move on to merging.
 
 On exploring the datasets, I saw that sleep_day data has 24 unique id while daily_activity has 33 unique id, and weight_log_info only has 8 unique id so I'm not too sure merging is the best idea right now. Ooooohhhh this is a tough call but I will try to see if there is any relationships between the data but will let the stakeholders know the obvious limitations of the datasets (if I can find the relationships at all that is!)
 
+Now let's move the fun zone - Data analysis!
+
 ## Analyze
 
 ## Share
