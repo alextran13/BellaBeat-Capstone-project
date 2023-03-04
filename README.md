@@ -46,6 +46,7 @@ and relationship, stakeholders will be informed to better make data-based market
 
 ## Prepare
 
+#### General info about the datasets
 * Data link: https://www.kaggle.com/datasets/arashnic/fitbit 
 * Availability: There are 18 data files in .csv format.
 * Data source: https://zenodo.org/record/53894#.X9oeh3Uzaao 
@@ -55,6 +56,34 @@ Preprocessed and shared on Kaggle platform by Mobius.
 * Compresensiveness: The data covers sleep habits, daily intensity of activity, durations of those sleep and activities, and calories changes.
 * Currentness: Data was recorded from April 12, 2016 to May 12, 2026
 * Citation: Unknown
+* Limitations: 
+          Datasets only has a sample size of 30 therefore any relationships established from this datasets will have a low confidence level. 
+          Data was collected in 2016 so it has been outdated. Any habits or prequencies of these habits of users have most likely changed.
+          Finally, this data contains daily sleep, activity - habits which is formed after a long time. Only 2-month-duration of data is most likely not enough to make conclusive patterns, and therefore not enough for business decisions for a long run. 
+
+#### Data preparation
+Download the datasets using the link on Kaggle above. After that, create tables daily_activity and sleep_day using PostgreSQL Pgadmin4 and import the main tables daily_activity and sleep_day in csv format using import function in PostgreSQL. 
+
+`CREATE TABLE daily_activity
+(
+   "Bellabeat_Id" bigint,
+    "ActivityDate" date,
+    "TotalSteps" bigint,
+    "TotalDistance" numeric,
+    "TrackerDistance" numeric,
+    "LoggedactivitiesDistance" numeric,
+    "VeryActiveDistance" numeric,
+    "ModeratelyActiveDistance" numeric,
+    "LightActiveDistance" numeric,
+    "SedentaryActiveDistance" numeric,
+    "VeryActiveMinutes" integer,
+    "FairlyActiveMinutes" integer,
+    "LightlyActiveMinutes" integer,
+    "SedentaryMinutes" integer,
+    "Calories" integer
+    )`
+
+
 
 ## Process
 
