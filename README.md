@@ -158,7 +158,7 @@ Now let's move the fun zone - Data analysis!
           round(max(tot_steps))
           from joined_activity_sleep;
 
-<img width="669" alt="Screenshot 2023-03-06 at 1 02 52 PM" src="https://user-images.githubusercontent.com/74520739/223031589-44ba2603-808d-49ef-93ee-0ffd4ec1b2bb.png">
+<img width="520" alt="Screenshot 2023-03-06 at 1 02 52 PM" src="https://user-images.githubusercontent.com/74520739/223031589-44ba2603-808d-49ef-93ee-0ffd4ec1b2bb.png">
 
 
 
