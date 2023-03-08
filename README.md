@@ -135,7 +135,7 @@ Now let's move the fun zone - Data analysis!
 ## Analyze
 
 > 
-          /*summary code*/
+          /*statistics summary*/
           
           create table summary_table as
           select 'total_distance' as category, 
@@ -160,6 +160,22 @@ Now let's move the fun zone - Data analysis!
 
 <img width="520" alt="Screenshot 2023-03-06 at 1 02 52 PM" src="https://user-images.githubusercontent.com/74520739/223031589-44ba2603-808d-49ef-93ee-0ffd4ec1b2bb.png">
 
+>
+          /* summary stats on day of the week */
+          
+          select distinct dayofweek, count(*)
+          from joined_activity_sleep
+          group by dayofweek
+          having dayofweek is not null
+          order by count(*);
+          
+
+
+<img width="520" alt="Screenshot 2023-03-08 at 2 43 01 PM" src="https://user-images.githubusercontent.com/74520739/223651797-47e4d259-f6ea-4cf7-a206-400ad21dac3b.png">
+
+I noticed that Monday is the lowest day of the week that users record data, which makes sense since it's the first day of the week and according to so many memes complaining about Monday. Whereas Thursday, Tuesday and Wednesday are in the middle of the week where users have time to pick up the pace for the week with the highest record data.
+
+Relationships between user's difference between time in bed and time actually asleep (indicating hardship of falling to sleep), and the activity the next day
 
 
 ## Share
