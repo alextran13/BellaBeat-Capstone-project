@@ -130,6 +130,45 @@ After the cleaning data is done, I can now move on to merging.
 
 On exploring the datasets, I saw that sleep_day data has 24 unique id while daily_activity has 33 unique id, and weight_log_info only has 8 unique id so I'm not too sure merging is the best idea right now. Ooooohhhh this is a tough call but I will try to see if there is any relationships between the data but will let the stakeholders know the obvious limitations of the datasets (if I can find the relationships at all that is!)
 
+Before moving on to Data Analysis part, I want to merge sleep table with daily activity table and replace some null values to zero for easier calculations later.
+
+>
+
+          /* replace null value with zeros */     
+          update joined_activity_sleep
+          set tot_distance = 0,
+          tracker_distance = 0,
+          logged_distance = 0,
+          very_active_distance = 0,
+          moderately_active_distance = 0,
+          light_active_distance = 0,
+          sedentary_active_distance = 0,
+          very_active_minutes = 0,
+          fairly_active_minutes = 0,
+          lightly_active_minutes = 0,
+          sedentary_minutes = 0,
+          calories = 0
+          where tot_distance is null
+          and tracker_distance is null
+          and logged_distance is null
+          and very_active_distance is null
+          and moderately_active_distance is null
+          and light_active_distance is null
+          and sedentary_active_distance is null
+          and very_active_minutes is null
+          and fairly_active_minutes is null
+          and lightly_active_minutes is null
+          and sedentary_minutes is null
+          and calories is null;
+
+
+
+          /* check through the table */
+
+          select * from joined_activity_sleep
+
+
+
 Now let's move the fun zone - Data analysis!
 
 ## Analyze
@@ -173,9 +212,35 @@ Now let's move the fun zone - Data analysis!
 
 <img width="520" alt="Screenshot 2023-03-08 at 2 43 01 PM" src="https://user-images.githubusercontent.com/74520739/223651797-47e4d259-f6ea-4cf7-a206-400ad21dac3b.png">
 
-I noticed that Monday is the lowest day of the week that users record data, which makes sense since it's the first day of the week and according to so many memes complaining about Monday. Whereas Thursday, Tuesday and Wednesday are in the middle of the week where users have time to pick up the pace for the week with the highest record data.
+I noticed that Monday is the lowest day of the week that users record data, which makes sense since it's the first day of the week. Whereas Thursday, Tuesday and Wednesday are in the middle of the week where users have time to pick up the pace for the week with the highest record data. We can integrete this knowledge into a kind of reminder for users to be active more and be attentive to their sleep and
 
-Relationships between user's difference between time in bed and time actually asleep (indicating hardship of falling to sleep), and the activity the next day
+Ralationships between sleep and calories and activity
+
+>
+
+          select id, extract(week from activity_date) as week,
+          sum(tot_min_sleep) as sum_sleep,
+          sum(calories) as sum_cal, 
+          count(very_active_minutes) as count_active_min,
+          count(fairly_active_minutes) as count_fair_active_min,
+          count(lightly_active_minutes) as count_light_active_min,
+          count(sedentary_minutes) as count_sedentary_min
+          from joined_activity_sleep
+          where id is not null
+          group by id, week
+          order by id, week;
+          
+![sleep and calories](https://user-images.githubusercontent.com/74520739/223945239-c92626ca-8c32-447d-af8e-8de3b927837f.png)
+
+![sleep and active min](https://user-images.githubusercontent.com/74520739/223948410-1f0a293d-f2ba-417d-aa70-71f8985e79b0.png)
+
+![sleep and active distance](https://user-images.githubusercontent.com/74520739/223949934-37a6180b-ada5-418a-96cd-6a5d3f70353c.png)
+
+From the results, I can see that there is a linear relationship between sleep and active minutes, distance and therefore calories of users. 
+
+Relationships between user's difference between time in bed and time actually asleep (indicating hardship of falling to sleep), and the activity the next day?
+
+
 
 
 ## Share
