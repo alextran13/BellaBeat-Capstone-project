@@ -286,6 +286,10 @@ Now I am looking at the impact of tensity of activity to calories and sleep
 ![intensity vs struggle to fall asleep (1)](https://user-images.githubusercontent.com/74520739/223976509-00468f32-8d29-4ec2-9a68-0e14911252ba.png)
 
 
+I can see that the the highest intensity of activity (very active minutes), more likely that users have less struggle time for falling asleep, more sleep time, and more likely to burn calories even though users spend less time in the very active intensity than other intensity groups. 
+
+
+
 
 
 
