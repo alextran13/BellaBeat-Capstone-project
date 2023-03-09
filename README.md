@@ -289,6 +289,10 @@ Now I am looking at the impact of tensity of activity to calories and sleep
 I can see that the the highest intensity of activity (very active minutes), more likely that users have less struggle time for falling asleep, more sleep time, and more likely to burn calories even though users spend less time in the very active intensity than other intensity groups. 
 
 
+![time sleep vs calories burnt](https://user-images.githubusercontent.com/74520739/223991542-8eedf96a-bce6-400d-83de-908b6d901d04.png)
+
+My hypothesis was maybe the time user sleep can affect the calories burnt during the day. Well when i look at the graph, at first I don't see the impact of sleep on calories but there are so many users have the exact same sleep (by exact I mean exact minutes of sleep, not even 1 minute different every night or the first 20 days) but they logged in different amount of calories. I observe some linear trends showing that the more time of sleep, the highter the calories burnt. However, the datasets seemed invented so I'd say the patterns found were not conclusive. 
+
 
 
 
