@@ -279,7 +279,13 @@ Now I am looking at the impact of tensity of activity to calories and sleep
           group by id
           order by id
 
-          
+![intensity vs calories](https://user-images.githubusercontent.com/74520739/223974982-6f0fc681-3ef0-4fb6-9352-ecddc6d1b2a6.png)
+
+![intensity vs sleep time](https://user-images.githubusercontent.com/74520739/223975768-b3985200-34b5-4ada-ab8e-f9c5cd9d25f0.png)
+
+![intensity vs struggle to fall asleep (1)](https://user-images.githubusercontent.com/74520739/223976509-00468f32-8d29-4ec2-9a68-0e14911252ba.png)
+
+
 
 
 
