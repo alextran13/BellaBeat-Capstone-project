@@ -240,8 +240,8 @@ From the results, I can see that there is a linear relationship between sleep an
 
 Relationships between user's difference between time in bed and time actually asleep (indicating hardship of falling to sleep), and the activity the next day?
           
-          >
-          select id, 
+>         
+          select id,
           extract(week from activity_date) as week,
           sum(tot_min_sleep) as sum_sleep,
           sum(tot_t_inbed) as sum_inbed,
@@ -253,6 +253,33 @@ Relationships between user's difference between time in bed and time actually as
           order by id, week; 
           
 
+
+![time struggle to sleep and calories ](https://user-images.githubusercontent.com/74520739/223963200-118bfd6e-3937-492f-829d-6f7fd41097e9.png)
+
+![struggle sleep and active min](https://user-images.githubusercontent.com/74520739/223963252-733c0fac-ed50-4743-9e69-43dbf0f391ca.png)
+
+![struggle to fall sleep and total active distance](https://user-images.githubusercontent.com/74520739/223963293-41ead0e5-a3a8-4467-9220-394263ae8852.png)
+
+
+I assumed the difference between total time in bed and actual sleep time to be the time users struggle to fall asleep. I could imagine the longer the time users struggle to fall asleep, the more tired they would be and therefore lower their activity performance, hence their calories. So I put together three graphs to test my hypothesis. Nonetheless, after checking the graphs, I don't see a clear relationships between this time struggle falling asleep and avtivie distance, time, and calories.
+
+Now I am looking at the impact of tensity of activity to calories and sleep
+
+>         
+
+          select distinct id,
+          sum(calories) as tot_cal,
+          sum(tot_min_sleep) as sleep,
+          sum(very_active_minutes) as active,
+          sum(fairly_active_minutes) as fair,
+          sum(lightly_active_minutes) as light,
+          sum(sedentary_minutes) as sedentary
+          from joined_activity_sleep
+          where id is not null
+          group by id
+          order by id
+
+          
 
 
 
