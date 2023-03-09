@@ -239,6 +239,19 @@ Ralationships between sleep and calories and activity
 From the results, I can see that there is a linear relationship between sleep and active minutes, distance and therefore calories of users. 
 
 Relationships between user's difference between time in bed and time actually asleep (indicating hardship of falling to sleep), and the activity the next day?
+          
+          >
+          select id, 
+          extract(week from activity_date) as week,
+          sum(tot_min_sleep) as sum_sleep,
+          sum(tot_t_inbed) as sum_inbed,
+          sum(t_awake_inbed) as sum_awake_inbed,
+          round(sum(tot_distance)) as tot_distance,
+          sum(calories) as sum_calories
+          from joined_activity_sleep
+          group by id, week
+          order by id, week; 
+          
 
 
 
