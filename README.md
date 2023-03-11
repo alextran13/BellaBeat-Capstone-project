@@ -37,8 +37,8 @@ As a junior data analyst, I was asked to access datasets provided by the company
 and relationship, stakeholders will be informed to better make data-based marketing decisions to expand business.
 
 ## Ask
-* Is there a relationships between user's sleep and the activity the next day?
-* Is there a relationships between user's difference between time in bed and time actually asleep (indicating hardship of falling to sleep), and the activity the next day?
+* Is there a relationships between user's sleep and the activity?
+* Is there a relationships between user's difference between time in bed and time actually asleep (indicating hardship of falling to sleep), and the activity?
 * Does intensity of activity help sleep?
 * Does intensity of activity help user change calories?
 * Does sleep help user lose calories or gain calories?
@@ -212,7 +212,7 @@ Now let's move the fun zone - Data analysis!
 
 <img width="520" alt="Screenshot 2023-03-08 at 2 43 01 PM" src="https://user-images.githubusercontent.com/74520739/223651797-47e4d259-f6ea-4cf7-a206-400ad21dac3b.png">
 
-I noticed that Monday is the lowest day of the week that users record data, which makes sense since it's the first day of the week. Whereas Thursday, Tuesday and Wednesday are in the middle of the week where users have time to pick up the pace for the week with the highest record data. We can integrete this knowledge into a kind of reminder for users to be active more and be attentive to their sleep and
+I noticed that Monday is the lowest day of the week that users record data, which makes sense since it's the first day of the week. Whereas Thursday, Tuesday and Wednesday are in the middle of the week where users have time to pick up the pace for the week with the highest record data. We can integrete this knowledge into a reminder for users to be active more and be attentive to their sleep and daily activity.
 
 Ralationships between sleep and calories and activity
 
@@ -277,7 +277,7 @@ Now I am looking at the impact of tensity of activity to calories and sleep
           from joined_activity_sleep
           where id is not null
           group by id
-          order by id
+          order by id;
 
 ![intensity vs calories](https://user-images.githubusercontent.com/74520739/223974982-6f0fc681-3ef0-4fb6-9352-ecddc6d1b2a6.png)
 
@@ -295,10 +295,9 @@ My hypothesis was maybe the time user sleep can affect the calories burnt during
 
 
 
-
-
-
 ## Share
+
+
 
 ## Act
 
