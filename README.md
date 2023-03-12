@@ -278,24 +278,33 @@ Now I am looking at the impact of tensity of activity to calories and sleep
           where id is not null
           group by id
           order by id;
+![intensity and calories](https://user-images.githubusercontent.com/74520739/224560545-00bf38b4-31c2-4977-803b-73ada2c5cda1.png)
 
-![intensity vs calories](https://user-images.githubusercontent.com/74520739/223974982-6f0fc681-3ef0-4fb6-9352-ecddc6d1b2a6.png)
 
-![intensity vs sleep time](https://user-images.githubusercontent.com/74520739/223975768-b3985200-34b5-4ada-ab8e-f9c5cd9d25f0.png)
 
-![intensity vs struggle to fall asleep (1)](https://user-images.githubusercontent.com/74520739/223976509-00468f32-8d29-4ec2-9a68-0e14911252ba.png)
+![Intensity of activity vs sleep time ](https://user-images.githubusercontent.com/74520739/224560748-0a8472e4-00d5-4f96-9a2e-75eb588ec1a0.png)
+
 
 
 I can see that the the highest intensity of activity (very active minutes), more likely that users have less struggle time for falling asleep, more sleep time, and more likely to burn calories even though users spend less time in the very active intensity than other intensity groups. 
 
+![Sleep time vs cal over week](https://user-images.githubusercontent.com/74520739/224560867-6f1da322-885c-43dd-82a2-3f013b31df8e.png)
 
-![time sleep vs calories burnt](https://user-images.githubusercontent.com/74520739/223991542-8eedf96a-bce6-400d-83de-908b6d901d04.png)
 
 My hypothesis was maybe the time user sleep can affect the calories burnt during the day. Well when i look at the graph, at first I don't see the impact of sleep on calories but there are so many users have the exact same sleep (by exact I mean exact minutes of sleep, not even 1 minute different every night or the first 20 days) but they logged in different amount of calories. I observe some linear trends showing that the more time of sleep, the highter the calories burnt. However, the datasets seemed invented so I'd say the patterns found were not conclusive. 
 
 
 
 ## Share
+
+![sleep effect on calories dashboard](https://user-images.githubusercontent.com/74520739/224561057-f366b683-5f7b-4f03-8411-cea54705ad7d.png)
+
+
+![Sleep and active t and s](https://user-images.githubusercontent.com/74520739/224561462-57b0c3fd-0dc2-4885-9acd-1ea28ef74aa9.png)
+
+
+
+![intensity vs cal and sleep](https://user-images.githubusercontent.com/74520739/224561340-063a15c6-b2b9-403d-b0a1-3ecccdc7a714.png)
 
 
 
