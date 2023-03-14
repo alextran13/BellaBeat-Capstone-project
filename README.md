@@ -299,16 +299,22 @@ My hypothesis was maybe the time user sleep can affect the calories burnt during
 
 ![sleep effect on calories dashboard](https://user-images.githubusercontent.com/74520739/224561057-f366b683-5f7b-4f03-8411-cea54705ad7d.png)
 
+As you can see, there is a linear trend between total sleep time and calories. I made a dashboard here to show you the relationships during the week (upper graphs) and total calories burnt (lower graph). In general, the more users sleep, the more calories get burnt. The lower graph shows the stronggest correlation with R-squared = 0.85 while correlation on Tuesday and Wednesday to be the highest during the week, which is not surprised since we saw the recording count on those days to be the highest in the earlier graph. 
 
 ![Sleep and active t and s](https://user-images.githubusercontent.com/74520739/224561462-57b0c3fd-0dc2-4885-9acd-1ea28ef74aa9.png)
 
+In addition, sleep time also has an effect on length of activity and distance. As can be seen from the graphs, a regression relationship is shown in both activiy and distance, in which time active being more impacted with a bigger R-squared = 0.95 while distance active R-squared = 0.79. This means, users tend to be active longer with more sleep. This makes sense, when one is more well rested, one tend to feel better, hit the gym more, or generally be more active. But doesn't more time active means more distance active? Well let's check it out, shall we?
 
 
 ![intensity vs cal and sleep](https://user-images.githubusercontent.com/74520739/224561340-063a15c6-b2b9-403d-b0a1-3ecccdc7a714.png)
 
-
+Finally, this dashboard of relationship between activity intensity and sleep actually answers my question. So turns out more sleep time means more time active, however, doesn't necessarily mean more distance. Since users might tend to be more active with setentary and light exercises, which lead to more time but not necessarily longer distance. In fact, both graphs show us the light and sedentary intensity of activity have more consistent linear relationship on both calories and sleep time. 
 
 ## Act
 
-
+* I found that users tend to be more proactive during the week specially on Tuesday, Wednesday, and Thursday. 
+We can apply this into notofications and reminders to encourage users to be more active during the rest of the week and be consistent with their exercises. 
+* I also spot the linear relationship between sleep and active time, this essentially leads to more calories burnt. 
+I believe this is not news. We can conduct the same analysis with more data points and present this to on our app to encourage women to get more sleep to get more health benefits. We can more data analysis such as this to build a section on our app that speciallize in fun facts that they can look into. 
+* Another trend I saw is the relationship between intensity of activity on sleep and calories. Turns out light and sedentary exercises tend to have more direct correlation with calories and sleep than very active and fairly active intensity. We can integrete this information into our fun facts or notications as well, to remind and encourage users to be active. Even with just light exercises on days they don't want to get out of the bed can help with calories and sleep according to our data. 
 
