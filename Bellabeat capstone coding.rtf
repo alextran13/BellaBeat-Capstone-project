@@ -1,0 +1,675 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2708
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c100000\c100000\c100000;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww12500\viewh15760\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+COPY testexcel(a,b,c)\
+FROM '/Users/ninhtran/Desktop/ALL FOLDERS/Data analysis/testabc.csv'\
+DELIMITER ','\
+CSV HEADER;\
+\
+select distinct "Bellabeat_Id"\
+from daily_activity;\
+\
+select distinct "Bellabeat_Id", round(avg("Calories"),2) as avg_calories, \
+round(avg("TotalSteps"),2) as avg_steps, \
+round(avg("TotalDistance"),2) as avg_totdist,\
+from daily_activity\
+group by "Bellabeat_Id"\
+order by avg_calories;\
+\
+select distinct("Id"), round(avg("Calories"),2) as avg_calories\
+from daily_calories\
+group by "Id";\
+\
+select distinct(extract('month' from "ActivityDay"))\
+from daily_calories;\
+\
+SELECT *\
+from daily_activity \
+where "Bellabeat_Id" is Null\
+or "ActivityDate" is null\
+or "TotalSteps" is null\
+or "TotalDistance" is null\
+or "TrackerDistance" is null\
+or "LoggedactivitiesDistance" is null\
+or "VeryActiveDistance" is null\
+or "ModeratelyActiveDistance" is null\
+or "LightActiveDistance" is null\
+or "SedentaryActiveDistance" is null\
+or "VeryActiveMinutes" is null\
+or "FairlyActiveMinutes" is null\
+or "LightlyActiveMinutes" is null\
+or "SedentaryMinutes" is null\
+or "Calories" is null;\
+\
+select "Bellabeat_Id", round(avg("TotalSteps"),2) as avg_steps,\
+round(avg("TotalDistance"),2) as avg_dist,\
+round(avg("VeryActiveDistance"),2) as avg_vadist,\
+round(avg("ModeratelyActiveDistance"),2) as avg_madist,\
+round(avg("LightActiveDistance"),2) as avg_ladist,\
+round(avg("Calories"),2) as avg_cal,\
+avg("TotalTimeInBed" - "TotalMinuteAsleep") as sleep_diff\
+from joined_activity_sleep\
+group by "Bellabeat_Id";\
+\
+select * from joined_activity_sleep\
+left join heart_rate\
+on joined_activity_sleep."Bellabeat_Id" = heart_rate."Id\'94;\
+\
+select count(distinct "Id") from heart_rate;\
+#output: 14 \
+\
+select count(distinct "Id") from daily_Calories;\
+\
+select count(distinct "Id") from daily_intensities;\
+\
+select count(distinct "Id") from daily_steps;\
+\
+select count(distinct "Id") from hourly_calories;\
+\
+select count(distinct "Id") from hourly_intensities;\
+\
+select count(distinct "Id") from hourly_steps;\
+\
+select count(distinct "Id") from minute_METS;\
+\
+select count(distinct "Id") from minute_calories;\
+\
+select count(distinct "Id") from minute_intensities;\
+\
+select count(distinct "Id") from minute_sleep;\
+#output: 24\
+\
+select count(distinct "Id") from minute_steps;\
+\
+\
+ALTER TABLE daily_activity\
+    RENAME "Bellabeat_Id" TO id;\
+\
+\
+#checking for duplicates\
+\
+select count(*) as count\
+from daily_activity\
+group by id, activity_date, tot_step, calories\
+having count(*) >1\
+order by id;\
+\
+\
+select * from weight_log_info;\
+\
+alter table weight_log_info\
+rename "Id" to id;\
+\
+alter table weight_log_info\
+rename "Date" to date; \
+\
+alter table weight_log_info\
+rename "WeightKg" to w_kg;\
+\
+alter table weight_log_info\
+rename "WeightPounds" to w_lbs;\
+\
+ \
+alter table weight_log_info\
+rename "Fat" to fat;\
+\
+alter table weight_log_info\
+rename "BMI" to bmi;\
+\
+alter table weight_log_info\
+rename "IsManualReport" to is_manual_report;\
+\
+alter table weight_log_info\
+rename "LogId" to log_id;\
+\
+select count(*) as count\
+from weight_log_info\
+group by id, date, w_kg, fat\
+having count(*) >1\
+order by id;\
+\
+\
+SELECT *\
+from daily_activity \
+where id is Null\
+or activity_date is null\
+or tot_step is null\
+or tot_distance is null\
+or tracker_distance is null\
+or logged_distance is null\
+or very_active_distance is null\
+or moderately_active_distance is null\
+or light_active_distance is null\
+or sedentary_active_distance is null\
+or very_active_minutes is null\
+or fairly_active_minutes is null\
+or lightly_active_minutes is null\
+or sedentary_minutes is null\
+or calories is null;\
+\
+alter table sleep_day\
+rename "Id" to id;\
+\
+alter table sleep_day\
+rename "SleepDay" to sleep_day;\
+\
+alter table sleep_day\
+rename "TotalSleepRecords" to tot_sleep;\
+\
+alter table sleep_day\
+rename "TotalMinuteAsleep" to tot_min_sleep;\
+\
+alter table sleep_day\
+rename "TotalTimeInBed" to tot_t_inbed;\
+\
+select * from sleep_day\
+where id is null\
+or sleep_day is null\
+or tot_sleep is null\
+or tot_min_sleep is null\
+or tot_t_inbed is null;\
+\
+\
+\
+select * from weight_log_info\
+where id is null\
+or date is null\
+or w_kg is null\
+or w_lbs is null\
+or fat is null\
+or bmi is null\
+or is_manual_report is null\
+or log_id is null;\
+\
+select * from weight_log_info;\
+\
+alter table weight_log_info \
+drop column fat;\
+\
+select * from weight_log_info;\
+\
+\
+alter table joined_activity_sleep\
+rename column "Bellabeat_Id" to id;\
+\
+alter table joined_activity_sleep\
+rename column "ActivityDate" to date;\
+\
+alter table joined_activity_sleep\
+rename column "TotalSteps" to tot_steps;\
+\
+alter table joined_activity_sleep\
+rename column "TotalDistance" to tot_distance;\
+\
+\
+alter table joined_activity_sleep\
+rename column "TrackerDistance" to tracker_distance;\
+\
+alter table joined_activity_sleep\
+rename column "LoggedactivitiesDistance" to logged_distance;\
+\
+alter table joined_activity_sleep\
+rename column "VeryActiveDistance" to very_active_distance;\
+\
+alter table joined_activity_sleep\
+rename column "ModeratelyActiveDistance" to moderately_active_distance;\
+\
+alter table joined_activity_sleep\
+rename column "LightActiveDistance" to light_active_distance;\
+\
+alter table joined_activity_sleep\
+rename column "SedentaryActiveDistance" to sedentary_active_distance;\
+\
+alter table joined_activity_sleep\
+rename column "VeryActiveMinutes" to very_active_minutes;\
+\
+alter table joined_activity_sleep\
+rename column "FairlyActiveMinutes" to fairly_active_minutes;\
+\
+alter table joined_activity_sleep\
+rename column "LightlyActiveMinutes" to lightly_active_minutes;\
+\
+alter table joined_activity_sleep\
+rename column "SedentaryMinutes" to sedentary_minutes;\
+\
+alter table joined_activity_sleep\
+rename column "Calories" to Calories;\
+\
+alter table joined_activity_sleep\
+rename column "Id" to id1;\
+\
+alter table joined_activity_sleep\
+rename column "SleepDay" to sleep_day;\
+\
+alter table joined_activity_sleep\
+rename column "TotalSleepRecords" to tot_sleep;\
+\
+alter table joined_activity_sleep\
+rename column "TotalMinuteAsleep" to tot_min_sleep;\
+\
+alter table joined_activity_sleep\
+rename column "TotalTimeInBed" to tot_t_inbed;\
+\
+\
+select * from joined_activity_sleep\
+left join weight_log_info\
+on joined_activity_sleep.id = weight_log_info.id\
+and joined_activity_sleep.date = weight_log_info.date;\
+\
+select distinct id from sleep_day;\
+\
+select distinct id from weight_log_info;\
+\
+\
+alter table joined_activity_sleep\
+add dayofweek varchar;\
+\
+alter table joined_activity_sleep\
+rename date to activity_date;\
+\
+Update joined_activity_sleep\
+set dayofweek = to_char(activity_date, 'Day');\
+\
+select dayofweek from joined_activity_sleep;\
+select sleep_day from joined_activity_sleep;\
+\
+alter table joined_activity_sleep\
+add dayofweek_sleep varchar;\
+\
+Update joined_activity_sleep\
+set dayofweek = to_char(sleep_day, 'Day');\
+\
+\
+select round(avg(tot_steps)) as avg_steps,\
+round(avg(tot_distance)) as avg_distance,\
+round(avg(tracker_distance)) as avg_tracker_distance,\
+round(avg(logged_distance)) as avg_logged_distance,\
+round(avg(very_active_distance)) as avg_very_active_distance,\
+round(avg(moderately_active_distance)) as avg_moderate_distance,\
+round(avg(light_active_distance)) as avg_light_distance,\
+round(avg(sedentary_active_distance)) as avg_sedentary_distance,\
+round(avg(very_active_minutes)) as avg_very_active_min,\
+round(avg(fairly_active_minutes)) as avg_fairly_active_min,\
+round(avg(lightly_active_minutes)) as avg_lightly_active_min,\
+round(avg(sedentary_minutes)) as avg_sedentary_min,\
+round(avg(calories)) as avg_calories,\
+round(avg(tot_sleep)) as avg_tot_sleep,\
+round(avg(tot_min_sleep)) as avg_tot_min_sleep,\
+round(avg(tot_t_inbed)) as avg_tot_t_inbed\
+from joined_activity_sleep;\
+\
+\
+select \
+round(percentile_cont(0.5) \
+			 within group (order by tot_steps))\
+as median_tot_steps,\
+round(percentile_cont(0.5) \
+	  within group (order by tot_distance))\
+as median_tot_distance,\
+round(percentile_cont(0.5) \
+	  within group (order by tracker_distance))\
+as median_tracker_distance,\
+round(percentile_cont(0.5) \
+	  within group (order by logged_distance))\
+as median_logged_distance,\
+round(percentile_cont(0.5) \
+	  within group (order by very_active_distance))\
+as median_very_active_distance,\
+round(percentile_cont(0.5) \
+	  within group (order by moderately_active_distance))\
+as median_moderately_active_distance,\
+round(percentile_cont(0.5) \
+	  within group (order by light_active_distance))\
+as median_light_active_distance,\
+round(percentile_cont(0.5) \
+	  within group (order by sedentary_active_distance))\
+as median_sedentary_active_distance,\
+round(percentile_cont(0.5) \
+	  within group (order by very_active_minutes))\
+as median_very_active_minutes,\
+round(percentile_cont(0.5) \
+	  within group (order by fairly_active_minutes))\
+as median_fairly_active_minutes,\
+round(percentile_cont(0.5) \
+	  within group (order by lightly_active_minutes))\
+as median_lightly_active_minutes,\
+round(percentile_cont(0.5) \
+	  within group (order by sedentary_minutes))\
+as median_sedentary_minutes,\
+round(percentile_cont(0.5) \
+	  within group (order by calories))\
+as median_calories,\
+round(percentile_cont(0.5) \
+	  within group (order by tot_sleep))\
+as median_tot_sleep,\
+round(percentile_cont(0.5) \
+	  within group (order by tot_min_sleep))\
+as median_tot_min_sleep,\
+round(percentile_cont(0.5) \
+	  within group (order by tot_t_inbed))\
+as median_tot_t_inbed\
+from joined_activity_sleep;\
+\
+\
+select distinct id, tot_steps, count(tot_steps)\
+from joined_activity_sleep\
+group by id, tot_steps\
+order by id, count(tot_steps) desc;\
+/*there are so many modes in every id*/\
+\
+\
+select distinct id, activity_date,\
+sum(tot_min_sleep) as sum_min_sleep,\
+sum(tot_steps) as sum_tot_steps\
+from joined_activity_sleep\
+where id = (select id from joined_activity_sleep\
+			order by id limit 1)\
+group by id, activity_date\
+order by activity_date;\
+\
+select distinct id, activity_date,\
+sum(tot_min_sleep) as sum_min_sleep,\
+sum(tot_steps) as sum_tot_steps\
+from joined_activity_sleep\
+where id = (select id from joined_activity_sleep\
+			order by id limit 1 offset 2)\
+group by id, activity_date\
+order by activity_date;\
+\
+select round(min(tot_steps)) as min_tot_steps,\
+round(avg(tot_steps)) as mean_tot_steps,\
+round(percentile_cont(0.5) \
+			 within group (order by tot_steps))\
+as median_tot_steps,\
+max(tot_steps) as max_tot_steps\
+from joined_activity_sleep;\
+\
+select dayofweek, count(*)\
+from joined_activity_sleep\
+where dayofweek is not null\
+group by dayofweek\
+order by datepart(week,activity_date)\
+\
+\
+\
+create table summary_table as\
+select 'total_distance' as category, \
+round(sum(tot_distance)) as sum,\
+round(min(tot_distance)) as min,\
+round(avg(tot_distance)) as mean,\
+round(percentile_cont(0.5) \
+			 within group (order by tot_distance))\
+as median,\
+round(max(tot_distance)) as max\
+from joined_activity_sleep;\
+\
+select * from summary_table;\
+\
+\
+insert into summary_table(category,sum,min,mean,median,max)\
+select\
+'tot_steps', \
+round(sum(tot_steps)),\
+round(min(tot_steps)),\
+round(avg(tot_steps)),\
+round(percentile_cont(0.5) \
+			 within group (order by tot_steps)),\
+round(max(tot_steps))\
+from joined_activity_sleep;\
+\
+select * from summary_table;\
+\
+\
+select * from summary_table;\
+\
+insert into joined_activity_sleep(t_awake_inbed)\
+select tot_t_inbed - tot_min_sleep\
+from joined_activity_sleep;\
+\
+select id, t_awake_inbed from joined_activity_sleep\
+where t_awake_inbed is not null;\
+\
+select dayofweek, count(*)\
+from joined_activity_sleep\
+where dayofweek is not null\
+group by dayofweek;\
+\
+select\
+cast (dayofweek to integer) from joined_activity_sleep\
+\
+\
+\
+select distinct dayofweek, count(*)\
+from joined_activity_sleep\
+group by dayofweek\
+having dayofweek is not null\
+order by count(*)\
+\
+\
+select id, extract(week from activity_date) as week,\
+sum(tot_min_sleep) as sum_sleep,\
+sum(calories) as sum_cal, \
+count(very_active_minutes) as count_active_min,\
+count(fairly_active_minutes) as count_fair_active_min,\
+count(lightly_active_minutes) as count_light_active_min,\
+count(sedentary_minutes) as count_sedentary_min\
+from joined_activity_sleep\
+where id is not null\
+group by id, week\
+order by id, week;\
+\
+update joined_activity_sleep\
+set tot_min_sleep = 0,\
+where tot_min_sleep is null;\
+\
+select tot_min_sleep from joined_activity_sleep\
+where tot_min_sleep = 0;\
+\
+select id, extract(week from activity_date) as week,\
+sum(tot_min_sleep) as sum_sleep,\
+sum(calories) as sum_cal, \
+count(very_active_minutes) as count_active_min,\
+count(fairly_active_minutes) as count_fair_active_min,\
+count(lightly_active_minutes) as count_light_active_min,\
+count(sedentary_minutes) as count_sedentary_min\
+from joined_activity_sleep\
+where id is not null\
+group by id, week\
+order by id, week;\
+\
+update joined_activity_sleep\
+set tot_t_inbed = 0,\
+tot_steps = 0\
+where tot_t_inbed is null\
+and tot_steps is null;\
+\
+select tot_steps, tot_t_inbed from joined_activity_sleep;\
+\
+\
+update joined_activity_sleep\
+set tot_distance = 0,\
+tracker_distance = 0,\
+logged_distance = 0,\
+very_active_distance = 0,\
+moderately_active_distance = 0,\
+light_active_distance = 0,\
+sedentary_active_distance = 0,\
+very_active_minutes = 0,\
+fairly_active_minutes = 0,\
+lightly_active_minutes = 0,\
+sedentary_minutes = 0,\
+calories = 0\
+where tot_distance is null\
+and tracker_distance is null\
+and logged_distance is null\
+and very_active_distance is null\
+and moderately_active_distance is null\
+and light_active_distance is null\
+and sedentary_active_distance is null\
+and very_active_minutes is null\
+and fairly_active_minutes is null\
+and lightly_active_minutes is null\
+and sedentary_minutes is null\
+and calories is null;\
+\
+select * from joined_activity_sleep\
+\
+\
+select id, extract(week from activity_date) as week,\
+sum(tot_min_sleep) as sum_sleep,\
+sum(calories) as sum_cal, \
+count(very_active_minutes) as count_active_min,\
+count(fairly_active_minutes) as count_fair_active_min,\
+count(lightly_active_minutes) as count_light_active_min,\
+count(sedentary_minutes) as count_sedentary_min\
+from joined_activity_sleep\
+where id is not null\
+group by id, week\
+order by id, week;\
+\
+update joined_activity_sleep\
+set tot_min_sleep = 0,\
+where tot_min_sleep is null;\
+\
+select tot_min_sleep from joined_activity_sleep\
+where tot_min_sleep = 0;\
+\
+select id, extract(week from activity_date) as week,\
+sum(tot_min_sleep) as sum_sleep,\
+sum(calories) as sum_cal, \
+count(very_active_minutes) as count_active_min,\
+count(fairly_active_minutes) as count_fair_active_min,\
+count(lightly_active_minutes) as count_light_active_min,\
+count(sedentary_minutes) as count_sedentary_min\
+from joined_activity_sleep\
+where id is not null\
+group by id, week\
+order by id, week;\
+\
+update joined_activity_sleep\
+set tot_t_inbed = 0,\
+tot_steps = 0\
+where tot_t_inbed is null\
+and tot_steps is null;\
+\
+select tot_steps, tot_t_inbed from joined_activity_sleep;\
+\
+select sum(t_awake_inbed),\
+\
+\
+update joined_activity_sleep\
+set tot_distance = 0,\
+tracker_distance = 0,\
+logged_distance = 0,\
+very_active_distance = 0,\
+moderately_active_distance = 0,\
+light_active_distance = 0,\
+sedentary_active_distance = 0,\
+very_active_minutes = 0,\
+fairly_active_minutes = 0,\
+lightly_active_minutes = 0,\
+sedentary_minutes = 0,\
+calories = 0\
+where tot_distance is null\
+and tracker_distance is null\
+and logged_distance is null\
+and very_active_distance is null\
+and moderately_active_distance is null\
+and light_active_distance is null\
+and sedentary_active_distance is null\
+and very_active_minutes is null\
+and fairly_active_minutes is null\
+and lightly_active_minutes is null\
+and sedentary_minutes is null\
+and calories is null;\
+\
+select * from joined_activity_sleep;\
+\
+select id, \
+sum(tot_min_sleep) as sum_sleep,\
+sum(tot_t_inbed) as sum_inbed,\
+sum(t_awake_inbed) as sum_awake_inbed,\
+extract(week from activity_date) as week,\
+sum(tot_distance) as tot_distance,\
+sum(calories) as sum_calories\
+from joined_activity_sleep\
+group by id, week\
+order by id, week;\
+\
+update joined_activity_sleep\
+set t_awake_inbed = tot_t_inbed - tot_min_sleep;\
+\
+select id, \
+sum(tot_min_sleep) as sum_sleep,\
+sum(tot_t_inbed) as sum_inbed,\
+sum(t_awake_inbed) as sum_awake_inbed,\
+extract(week from activity_date) as week,\
+sum(tot_distance) as tot_distance,\
+sum(calories) as sum_calories\
+from joined_activity_sleep\
+group by id, week\
+order by id, week; \
+\
+update joined_activity_sleep\
+set t_awake_inbed = 0,\
+tot_t_inbed = 0\
+where t_awake_inbed is null\
+and tot_t_inbed is null;\
+\
+\
+\
+select id, \
+extract(week from activity_date) as week,\
+sum(tot_min_sleep) as sum_sleep,\
+sum(tot_t_inbed) as sum_inbed,\
+sum(t_awake_inbed) as sum_awake_inbed,\
+round(sum(tot_distance)) as tot_distance,\
+sum(calories) as sum_calories\
+from joined_activity_sleep\
+group by id, week\
+order by id, week; \
+\
+\
+select distinct id,\
+sum(calories) as tot_cal,\
+sum(tot_min_sleep) as sleep,\
+sum(very_active_minutes) as active,\
+sum(fairly_active_minutes) as fair,\
+sum(lightly_active_minutes) as light,\
+sum(sedentary_minutes) as sedentary\
+from joined_activity_sleep\
+where id is not null\
+group by id\
+order by id;\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+}
