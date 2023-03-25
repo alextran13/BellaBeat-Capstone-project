@@ -312,9 +312,11 @@ Finally, this dashboard of relationship between activity intensity and sleep act
 
 ## Act
 
-* I found that users tend to be more proactive during the week specially on Tuesday, Wednesday, and Thursday. 
-We can apply this into notofications and reminders to encourage users to be more active during the rest of the week and be consistent with their exercises. 
+* I found that users tend to be more proactive during the week, especially on Tuesday, Wednesday, and Thursday. 
+We can apply this to notifications and reminders to encourage users to be more active during the rest of the week and be consistent with their exercises. 
 * I also spot the linear relationship between sleep and active time, this essentially leads to more calories burnt. 
-I believe this is not news. We can conduct the same analysis with more data points and present this to on our app to encourage women to get more sleep to get more health benefits. We can more data analysis such as this to build a section on our app that speciallize in fun facts that they can look into. 
-* Another trend I saw is the relationship between intensity of activity on sleep and calories. Turns out light and sedentary exercises tend to have more direct correlation with calories and sleep than very active and fairly active intensity. We can integrete this information into our fun facts or notications as well, to remind and encourage users to be active. Even with just light exercises on days they don't want to get out of the bed can help with calories and sleep according to our data. 
+I believe this is not news. We can conduct the same analysis with more data points and present this to on our app to encourage women to get more sleep to get more health benefits. We can do more data analysis such as this to build a section on our app that specializes in fun facts that they can look into. 
+* Another trend I saw is the relationship between the intensity of activity on sleep and calories. Turns out light and sedentary exercises tend to have more direct correlation with calories and sleep than very active and fairly active intensity. We can integrate this information into our fun facts or notifications as well, to remind and encourage users to be active. Even just light exercises on days, they don't want to get out of bed can help with calories and sleep according to our data.
+
+
 
