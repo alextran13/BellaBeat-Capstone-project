@@ -1,4 +1,4 @@
-# BellaBeat-Capstone-project
+# BellaBeat-App-project
 Author: Alex T
 
 Date: March 2, 2023
